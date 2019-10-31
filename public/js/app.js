@@ -67138,7 +67138,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73078,10 +73078,41 @@ var Login =
 function (_Component) {
   _inherits(Login, _Component);
 
-  function Login() {
+  function Login(props) {
+    var _this;
+
     _classCallCheck(this, Login);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Login).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Login).call(this, props));
+
+    _this.submitForm = function (e) {
+      e.preventDefault();
+      var user = _this.state.user;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('http://localhost:8000/api/login', {
+        email: user.email,
+        password: user.password
+      }).then(function (response) {
+        // handle success
+        console.log(response);
+      })["catch"](function (error) {
+        // handle error
+        console.log(error);
+      });
+    };
+
+    _this.changeInput = function (e) {
+      var user = _this.state.user;
+      user[e.target.name] = e.target.value;
+
+      _this.setState({
+        user: user
+      });
+    };
+
+    _this.state = {
+      user: {}
+    };
+    return _this;
   }
 
   _createClass(Login, [{
@@ -73092,27 +73123,33 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card rounded-0"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "card-header text-center"
+        className: "card-header text-center border-0"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", {
         className: "display-5"
       }, "Login")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
+        onSubmit: this.submitForm
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", null, "Username"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", null, "Email"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         className: "form-control form-control-lg rounded-0",
-        type: "text",
-        placeholder: ""
+        name: "email",
+        type: "email",
+        onChange: this.changeInput
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", null, "Password"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         className: "form-control form-control-lg rounded-0",
+        name: "password",
         type: "password",
-        placeholder: "",
-        autoComplete: "new-password"
+        autoComplete: "new-password",
+        onChange: this.changeInput
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-primary btn-block btn-lg rounded-0"
-      }, "Login")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Not a member? ", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }, "Login"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card-footer text-center bg-white border-0"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Not a member? ", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/register"
       }, "Sign Up")))));
     }
@@ -73166,10 +73203,19 @@ var Register =
 function (_Component) {
   _inherits(Register, _Component);
 
-  function Register() {
+  function Register(props) {
+    var _this;
+
     _classCallCheck(this, Register);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Register).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Register).call(this, props));
+
+    _this.submitForm = function (e) {
+      e.preventDefault();
+      console.log('submit register form');
+    };
+
+    return _this;
   }
 
   _createClass(Register, [{
@@ -73180,12 +73226,14 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card rounded-0"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "card-header text-center"
+        className: "card-header text-center border-0"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", {
         className: "display-5"
       }, "Register")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
+        onSubmit: this.submitForm
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", null, "Name"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         className: "form-control form-control-lg rounded-0",
@@ -73213,9 +73261,11 @@ function (_Component) {
         autoComplete: "new-password"
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-primary btn-block btn-lg rounded-0"
-      }, "Login")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Already have an Account? ", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }, "Register")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card-footer text-center bg-white border-0"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Already have an Account? ", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/login"
-      }, "Sign In")))));
+      }, "Sign In"))))));
     }
   }]);
 
@@ -73250,21 +73300,37 @@ var Header = function Header() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "navbar-brand",
     to: "/"
-  }, "Tasksman"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+  }, "Tasksman"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "navbar-toggler",
+    type: "button",
+    "data-toggle": "collapse",
+    "data-target": "#navigation",
+    "aria-controls": "navigation",
+    "aria-expanded": "false",
+    "aria-label": "Toggle navigation"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "navbar-toggler-icon"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "collapse navbar-collapse justify-content-end",
+    id: "navigation"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "navbar-nav"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "nav-item active"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/login",
-    className: "nav-link",
-    href: "#"
+    className: "nav-link"
   }, "Login")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "nav-item active"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/register",
-    className: "nav-link",
-    href: "#"
-  }, "Register")))));
+    className: "nav-link"
+  }, "Register")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "nav-item active"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/logout",
+    className: "nav-link"
+  }, "Logout"))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);

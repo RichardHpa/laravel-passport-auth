@@ -13,7 +13,7 @@
 @import '~bootstrap/scss/bootstrap';
 
 body{
-    background-color: #34495e;
+    background-color: $body-bg;
 }
 
 .navbar-laravel {
@@ -22,7 +22,7 @@ body{
 }
 
 .full{
-    background-color: #34495e;
+    background-color: $body-bg;
     height: 100vh;
     width: 100vw;
     display: flex;

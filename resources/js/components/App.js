@@ -9,6 +9,7 @@ import Login from './Auth/Login';
 import Register from './Auth/Register';
 
 class App extends Component {
+
     render () {
         return (
             <BrowserRouter>
