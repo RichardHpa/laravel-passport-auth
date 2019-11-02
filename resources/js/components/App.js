@@ -10,6 +10,7 @@ import Landing from './Landing';
 import Header from './Header';
 import Login from './Auth/Login';
 import Register from './Auth/Register';
+import Logout from './Auth/Logout';
 
 class App extends Component {
 
@@ -24,6 +25,7 @@ class App extends Component {
                                 <Route exact path='/' component={Landing} />
                                 <Route exact path='/login' component={Login} />
                                 <Route exact path='/register' component={Register} />
+                                <Route exact path='/logout' component={Logout} />
                             </Switch>
                         </div>
                     </div>

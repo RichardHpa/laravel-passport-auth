@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { authentication} from '../actions';
+import { login } from '../actions';
 
 function Login(props) {
     const [ email, setEmail ] = useState('');
@@ -11,7 +11,7 @@ function Login(props) {
 
     const submitForm = (e) => {
         e.preventDefault();
-        dispatch(authentication({
+        dispatch(login({
             email: email,
             password: password
         })).then(response => {

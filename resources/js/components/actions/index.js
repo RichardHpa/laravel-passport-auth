@@ -1,24 +1,49 @@
 import axios from 'axios';
+import { isLoggedIn } from '../functions';
 import { useSelector } from 'react-redux';
 
-export function authentication (user) {
+export function login (user) {
     return (dispatch) => {
-        dispatch({type: 'PENDING_LOGIN'});
+        dispatch({type: 'PENDING'});
         return new Promise(function(resolve, reject) {
             axios.post('/api/login', user)
             .then((res) =>{
                 if(res.data.access_token){
-                    dispatch({type: 'TEST_AUTH', payload: res});
+                    const token = res.data.access_token;
+                    localStorage.setItem('access_token',  token);
+                    dispatch({type: 'LOGIN_SUCCESS', payload: res});
                 } else {
                     dispatch({type: 'LOGIN_ERROR'});
                 }
-                resolve(res)
+                resolve(res);
             })
             .catch((error)=> {
                 dispatch({type: 'LOGIN_ERROR', payload: error});
                 reject(error);
             })
         });
+    }
+}
+
+export function logout(){
+    if(isLoggedIn){
+        return (dispatch) => {
+            dispatch({type: 'PENDING'});
+            return new Promise(function(resolve, reject) {
+                axios.defaults.headers.common['Authorization'] = 'Bearer ' + useSelector(state => state.token);
+                axios.post('/api/logout')
+                .then((res) =>{
+                    localStorage.removeItem('access_token');
+                    dispatch({type: 'LOGOUT'});
+                    resolve(res);
+                })
+                .catch((error)=> {
+                    localStorage.removeItem('access_token');
+                    dispatch({type: 'LOGOUT'});
+                    reject(error);
+                })
+            });
+        }
     }
 }
 

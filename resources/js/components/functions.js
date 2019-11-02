@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+
 export const isLoggedIn = () => {
-    return localStorage.getItem('access_token')? true: false;
+    return useSelector(state => state.token) ? true: false;
 }
