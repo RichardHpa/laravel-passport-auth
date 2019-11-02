@@ -1,8 +1,11 @@
 // resources/assets/js/components/App.js
-
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { Provider } from 'react-redux';
+import thunk from "redux-thunk";
+import store from './store'
+
 import Landing from './Landing';
 import Header from './Header';
 import Login from './Auth/Login';
@@ -30,4 +33,8 @@ class App extends Component {
     }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('app'))
