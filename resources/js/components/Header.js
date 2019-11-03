@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 import { isLoggedIn } from './functions';
 
-// const Header = () => (
 const Header = () => {
     return(
         <nav className='navbar navbar-expand-md navbar-light navbar-laravel fixed-top'>
@@ -18,6 +17,7 @@ const Header = () => {
                     { !isLoggedIn() && <li className="nav-item active"><Link to="/login" className="nav-link">Login</Link></li>}
                     { !isLoggedIn() && <li className="nav-item active"><Link to="/register" className="nav-link">Register</Link></li>}
                     { isLoggedIn() && <li className="nav-item active"><Link to="/logout" className="nav-link">Logout</Link></li>}
+                    <li className="nav-item active"><Link to="/Test" className="nav-link">Test</Link></li>
                     </ul>
                 </div>
 
@@ -25,7 +25,5 @@ const Header = () => {
         </nav>
     )
 }
-
-// )
 
 export default Header
