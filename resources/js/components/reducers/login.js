@@ -1,4 +1,4 @@
-const authentication = (state = localStorage.getItem('access_token') || null, action) => {
+const login = (state = localStorage.getItem('access_token') || null, action) => {
     switch(action.type){
         case 'LOGIN_SUCCESS':
             return action.payload.data.access_token;
@@ -7,11 +7,10 @@ const authentication = (state = localStorage.getItem('access_token') || null, ac
         case 'LOGOUT':
             return null;
         case 'TEST_AUTH':
-            console.log('going to test_auth');
             return 'testing';
         default:
             return state
     }
 }
 
-export default authentication;
+export default login;

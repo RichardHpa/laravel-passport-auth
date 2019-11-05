@@ -75417,9 +75417,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Auth_Register__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Auth/Register */ "./resources/js/components/Auth/Register.js");
 /* harmony import */ var _Auth_Logout__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Auth/Logout */ "./resources/js/components/Auth/Logout.js");
 /* harmony import */ var _NoMatch__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./NoMatch */ "./resources/js/components/NoMatch.js");
-/* harmony import */ var _Test__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Test */ "./resources/js/components/Test.js");
 // resources/assets/js/components/App.js
-
 
 
 
@@ -75457,10 +75455,6 @@ var App = function App() {
     authed: Object(_functions__WEBPACK_IMPORTED_MODULE_6__["isLoggedIn"])(),
     path: "/logout",
     component: _Auth_Logout__WEBPACK_IMPORTED_MODULE_11__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_functions__WEBPACK_IMPORTED_MODULE_6__["LoggedInRoute"], {
-    authed: Object(_functions__WEBPACK_IMPORTED_MODULE_6__["isLoggedIn"])(),
-    path: "/test",
-    component: _Test__WEBPACK_IMPORTED_MODULE_13__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     component: _NoMatch__WEBPACK_IMPORTED_MODULE_12__["default"]
   }))))));
@@ -75537,9 +75531,6 @@ function Login(props) {
     }
   };
 
-  var token = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(function (state) {
-    return state.token;
-  });
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col col-md-8"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -75623,100 +75614,129 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions */ "./resources/js/components/actions/index.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
-var Register =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Register, _Component);
 
-  function Register(props) {
-    var _this;
 
-    _classCallCheck(this, Register);
+function Register(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      name = _useState2[0],
+      setName = _useState2[1];
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Register).call(this, props));
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      email = _useState4[0],
+      setEmail = _useState4[1];
 
-    _this.submitForm = function (e) {
-      e.preventDefault();
-      console.log('submit register form');
-    };
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      password = _useState6[0],
+      setPassword = _useState6[1];
 
-    return _this;
-  }
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState8 = _slicedToArray(_useState7, 2),
+      confirmPassword = _useState8[0],
+      setConfirmPassword = _useState8[1];
 
-  _createClass(Register, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col col-md-8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card rounded-0"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header text-center border-0"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "display-5"
-      }, "Register")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.submitForm
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-control form-control-lg rounded-0",
-        type: "text",
-        placeholder: ""
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-control form-control-lg rounded-0",
-        type: "text",
-        placeholder: ""
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-control form-control-lg rounded-0",
-        type: "password",
-        placeholder: "",
-        autoComplete: "new-password"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Confirm Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-control form-control-lg rounded-0",
-        type: "confirm-password",
-        placeholder: "",
-        autoComplete: "new-password"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-primary btn-block btn-lg rounded-0"
-      }, "Register")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-footer text-center bg-white border-0"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Already have an Account? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/login"
-      }, "Sign In"))))));
+  var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useDispatch"])();
+
+  var submitForm = function submitForm(e) {
+    e.preventDefault();
+    dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["register"])({
+      name: name,
+      email: email,
+      password: password,
+      password_confirmation: confirmPassword
+    })).then(function (response) {
+      if (response.data) {
+        props.history.push("/login");
+      } else {
+        console.log(response.data);
+        console.log('error');
+      }
+    });
+  };
+
+  var changeInput = function changeInput(e) {
+    e.preventDefault();
+
+    if (e.target.name === 'name') {
+      setName(e.target.value);
+    } else if (e.target.name === 'email') {
+      setEmail(e.target.value);
+    } else if (e.target.name === 'password') {
+      setPassword(e.target.value);
+    } else if (e.target.name === 'confirmPassword') {
+      setConfirmPassword(e.target.value);
     }
-  }]);
+  };
 
-  return Register;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col col-md-8"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card rounded-0"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-header text-center border-0"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "display-5"
+  }, "Register")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: submitForm
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "form-control form-control-lg rounded-0",
+    type: "text",
+    name: "name",
+    placeholder: "",
+    onChange: changeInput
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "form-control form-control-lg rounded-0",
+    type: "email",
+    name: "email",
+    placeholder: "",
+    onChange: changeInput
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "form-control form-control-lg rounded-0",
+    type: "password",
+    name: "password",
+    placeholder: "",
+    autoComplete: "new-password",
+    onChange: changeInput
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Confirm Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "form-control form-control-lg rounded-0",
+    type: "password",
+    placeholder: "",
+    name: "confirmPassword",
+    autoComplete: "new-password",
+    onChange: changeInput
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-primary btn-block btn-lg rounded-0"
+  }, "Register")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-footer text-center bg-white border-0"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Already have an Account? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/login"
+  }, "Sign In"))))));
+}
 
 /* harmony default export */ __webpack_exports__["default"] = (Register);
 
@@ -75913,83 +75933,18 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Test.js":
-/*!*****************************************!*\
-  !*** ./resources/js/components/Test.js ***!
-  \*****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-var Test =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Test, _Component);
-
-  function Test() {
-    _classCallCheck(this, Test);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Test).apply(this, arguments));
-  }
-
-  _createClass(Test, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col col-md-8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card rounded-0"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header text-center border-0"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "display-5"
-      }, "Test")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
-      })));
-    }
-  }]);
-
-  return Test;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (Test);
-
-/***/ }),
-
 /***/ "./resources/js/components/actions/index.js":
 /*!**************************************************!*\
   !*** ./resources/js/components/actions/index.js ***!
   \**************************************************/
-/*! exports provided: login, logout */
+/*! exports provided: login, logout, register */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "register", function() { return register; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../functions */ "./resources/js/components/functions.js");
@@ -76054,6 +76009,35 @@ function logout() {
       });
     };
   }
+}
+function register(user) {
+  return function (dispatch) {
+    dispatch({
+      type: 'REGISTER_REQUEST'
+    });
+    return new Promise(function (resolve, reject) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/register', user).then(function (res) {
+        if (res.data) {
+          dispatch({
+            type: 'REGISTER_SUCCESS',
+            payload: res
+          });
+        } else {
+          dispatch({
+            type: 'REGISTER_FAILURE'
+          });
+        }
+
+        resolve(res);
+      })["catch"](function (error) {
+        dispatch({
+          type: 'REGISTER_FAILURE',
+          payload: error
+        });
+        reject(error);
+      });
+    });
+  };
 } // NEED TO PASS THE SUCCESS INTO THE THEN AND THEN ADD TO LOCALSTORAGE
 //
 // export function authentication() {
@@ -76133,16 +76117,39 @@ function LoggedOutRoute(_ref2) {
 
 /***/ }),
 
-/***/ "./resources/js/components/reducers/authentication.js":
-/*!************************************************************!*\
-  !*** ./resources/js/components/reducers/authentication.js ***!
-  \************************************************************/
+/***/ "./resources/js/components/reducers/index.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/reducers/index.js ***!
+  \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var authentication = function authentication() {
+/* harmony import */ var _login__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./login */ "./resources/js/components/reducers/login.js");
+/* harmony import */ var _registerReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./registerReducer */ "./resources/js/components/reducers/registerReducer.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+
+
+
+var allReducers = Object(redux__WEBPACK_IMPORTED_MODULE_2__["combineReducers"])({
+  token: _login__WEBPACK_IMPORTED_MODULE_0__["default"],
+  registering: _registerReducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+});
+/* harmony default export */ __webpack_exports__["default"] = (allReducers);
+
+/***/ }),
+
+/***/ "./resources/js/components/reducers/login.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/reducers/login.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var login = function login() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : localStorage.getItem('access_token') || null;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
@@ -76157,7 +76164,6 @@ var authentication = function authentication() {
       return null;
 
     case 'TEST_AUTH':
-      console.log('going to test_auth');
       return 'testing';
 
     default:
@@ -76165,27 +76171,39 @@ var authentication = function authentication() {
   }
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (authentication);
+/* harmony default export */ __webpack_exports__["default"] = (login);
 
 /***/ }),
 
-/***/ "./resources/js/components/reducers/index.js":
-/*!***************************************************!*\
-  !*** ./resources/js/components/reducers/index.js ***!
-  \***************************************************/
+/***/ "./resources/js/components/reducers/registerReducer.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/reducers/registerReducer.js ***!
+  \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _authentication__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./authentication */ "./resources/js/components/reducers/authentication.js");
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+var registration = function registration() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
 
+  switch (action.type) {
+    case 'REGISTER_REQUEST':
+      return true;
 
-var allReducers = Object(redux__WEBPACK_IMPORTED_MODULE_1__["combineReducers"])({
-  token: _authentication__WEBPACK_IMPORTED_MODULE_0__["default"]
-});
-/* harmony default export */ __webpack_exports__["default"] = (allReducers);
+    case 'REGISTER_SUCCESS':
+      return {};
+
+    case 'REGISTER_FAILURE':
+      return {};
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (registration);
 
 /***/ }),
 

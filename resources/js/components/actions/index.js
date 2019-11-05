@@ -47,6 +47,27 @@ export function logout(){
     }
 }
 
+export function register (user) {
+    return (dispatch) => {
+        dispatch({type: 'REGISTER_REQUEST'});
+        return new Promise(function(resolve, reject) {
+            axios.post('/api/register', user)
+            .then((res) =>{
+                if(res.data){
+                    dispatch({type: 'REGISTER_SUCCESS', payload: res});
+                } else {
+                    dispatch({type: 'REGISTER_FAILURE'});
+                }
+                resolve(res);
+            })
+            .catch((error)=> {
+                dispatch({type: 'REGISTER_FAILURE', payload: error});
+                reject(error);
+            })
+        });
+    }
+}
+
 
 // NEED TO PASS THE SUCCESS INTO THE THEN AND THEN ADD TO LOCALSTORAGE
 

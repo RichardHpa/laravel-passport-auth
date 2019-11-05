@@ -14,8 +14,6 @@ import Register from './Auth/Register';
 import Logout from './Auth/Logout';
 import NoMatch from './NoMatch';
 
-import Test from './Test';
-
 const App = () => {
     return (
         <BrowserRouter>
@@ -30,8 +28,6 @@ const App = () => {
                             <LoggedOutRoute authed={!isLoggedIn()} path='/register' component={Register} />
 
                             <LoggedInRoute authed={isLoggedIn()} path='/logout' component={Logout} />
-
-                            <LoggedInRoute authed={isLoggedIn()} path='/test' component={Test} />
 
                             <Route component={NoMatch} />
                         </Switch>

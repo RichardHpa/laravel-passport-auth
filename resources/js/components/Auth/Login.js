@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login } from '../actions';
 
 function Login(props) {
@@ -33,7 +33,6 @@ function Login(props) {
         }
     }
 
-    const token = useSelector(state => state.token);
     return (
         <div className="col col-md-8">
             <div className="card rounded-0">

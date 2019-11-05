@@ -1,52 +1,79 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { register } from '../actions';
 
-class Register extends Component {
-    constructor(props){
-        super(props);
+function Register(props) {
+    const [ name, setName ] = useState('');
+    const [ email, setEmail ] = useState('');
+    const [ password, setPassword ] = useState('');
+    const [ confirmPassword, setConfirmPassword ] = useState('');
 
-    }
+    const dispatch = useDispatch();
 
-    submitForm = (e) => {
+    const submitForm = (e) => {
         e.preventDefault();
-        console.log('submit register form');
+        dispatch(register({
+            name: name,
+            email: email,
+            password: password,
+            password_confirmation: confirmPassword
+        })).then(response => {
+            if(response.data){
+                props.history.push("/login");
+            } else {
+                console.log(response.data);
+                console.log('error');
+            }
+        })
     }
 
-    render(){
-        return(
-            <div className="col col-md-8">
-                <div className="card rounded-0">
-                    <div className="card-header text-center border-0">
-                        <h3 className="display-5">Register</h3>
-                    </div>
-                    <div className="card-body">
-                        <form onSubmit={this.submitForm}>
-                            <div className="form-group">
-                                <label>Name</label>
-                                <input className="form-control form-control-lg rounded-0" type="text" placeholder=""/>
-                            </div>
-                            <div className="form-group">
-                                <label>Username</label>
-                                <input className="form-control form-control-lg rounded-0" type="text" placeholder=""/>
-                            </div>
-                            <div className="form-group">
-                                <label>Password</label>
-                                <input className="form-control form-control-lg rounded-0" type="password" placeholder="" autoComplete="new-password"/>
-                            </div>
-                            <div className="form-group">
-                                <label>Confirm Password</label>
-                                <input className="form-control form-control-lg rounded-0" type="confirm-password" placeholder="" autoComplete="new-password"/>
-                            </div>
-                            <button className="btn btn-primary btn-block btn-lg rounded-0">Register</button>
-                        </form>
+    const changeInput = (e) => {
+        e.preventDefault();
+        if(e.target.name === 'name'){
+            setName(e.target.value);
+        } else if(e.target.name === 'email'){
+            setEmail(e.target.value);
+        } else if(e.target.name === 'password'){
+            setPassword(e.target.value);
+        } else if(e.target.name === 'confirmPassword'){
+            setConfirmPassword(e.target.value);
+        }
+    }
 
-                        <div className="card-footer text-center bg-white border-0">
-                            <p>Already have an Account? <Link to="/login">Sign In</Link></p>
+    return (
+        <div className="col col-md-8">
+            <div className="card rounded-0">
+                <div className="card-header text-center border-0">
+                    <h3 className="display-5">Register</h3>
+                </div>
+                <div className="card-body">
+                    <form onSubmit={submitForm}>
+                        <div className="form-group">
+                            <label>Name</label>
+                            <input className="form-control form-control-lg rounded-0" type="text" name="name" placeholder="" onChange={changeInput}/>
                         </div>
+                        <div className="form-group">
+                            <label>Email</label>
+                            <input className="form-control form-control-lg rounded-0" type="email" name="email" placeholder="" onChange={changeInput}/>
+                        </div>
+                        <div className="form-group">
+                            <label>Password</label>
+                            <input className="form-control form-control-lg rounded-0" type="password" name="password" placeholder="" autoComplete="new-password" onChange={changeInput}/>
+                        </div>
+                        <div className="form-group">
+                            <label>Confirm Password</label>
+                            <input className="form-control form-control-lg rounded-0" type="password" placeholder="" name="confirmPassword" autoComplete="new-password" onChange={changeInput}/>
+                        </div>
+                        <button className="btn btn-primary btn-block btn-lg rounded-0">Register</button>
+                    </form>
+
+                    <div className="card-footer text-center bg-white border-0">
+                        <p>Already have an Account? <Link to="/login">Sign In</Link></p>
                     </div>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
 export default Register;
